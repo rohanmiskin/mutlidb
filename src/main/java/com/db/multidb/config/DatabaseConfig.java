@@ -12,7 +12,7 @@ import javax.sql.DataSource;
 
 @org.springframework.context.annotation.Configuration
 public class DatabaseConfig {
-    /*@Bean("postgresDatasource")
+    @Bean("postgresDatasource")
     @ConfigurationProperties(prefix = "spring.postgres")
     public DataSource postgresDataSource(){
         return DataSourceBuilder.create().build();
@@ -22,5 +22,17 @@ public class DatabaseConfig {
     public SessionFactory getPostgresSessionFactory(@Qualifier("postgresDatasource") DataSource dataSource){
         Configuration configuration = new LocalSessionFactoryBuilder(dataSource);
         return configuration.configure().buildSessionFactory();
-    }*/
+    }
+
+    @Bean("mysqlDatasource")
+    @ConfigurationProperties(prefix = "spring.mysql")
+    public DataSource mysqlDataSource(){
+        return DataSourceBuilder.create().build();
+    }
+
+    @Bean("mysqlSessionFactory")
+    public SessionFactory getMysqlSessionFactory(@Qualifier("mysqlDatasource") DataSource dataSource){
+        Configuration configuration = new LocalSessionFactoryBuilder(dataSource);
+        return configuration.configure().buildSessionFactory();
+    }
 }

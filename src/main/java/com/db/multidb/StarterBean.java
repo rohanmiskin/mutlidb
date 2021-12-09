@@ -17,6 +17,6 @@ public class StarterBean {
 
     @EventListener(ApplicationStartedEvent.class)
     public void getAndPrintEntity(){
-        myService.processDelete();
+//        myService.processDelete();
     }
 }
