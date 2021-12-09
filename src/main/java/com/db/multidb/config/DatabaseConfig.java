@@ -21,7 +21,7 @@ public class DatabaseConfig {
     @Bean("postgresSessionFactory")
     public SessionFactory getPostgresSessionFactory(@Qualifier("postgresDatasource") DataSource dataSource){
         Configuration configuration = new LocalSessionFactoryBuilder(dataSource);
-        return configuration.configure().buildSessionFactory();
+        return configuration.configure("/hibernate-postgres.cfg.xml").buildSessionFactory();
     }
 
     @Bean("mysqlDatasource")
@@ -33,6 +33,6 @@ public class DatabaseConfig {
     @Bean("mysqlSessionFactory")
     public SessionFactory getMysqlSessionFactory(@Qualifier("mysqlDatasource") DataSource dataSource){
         Configuration configuration = new LocalSessionFactoryBuilder(dataSource);
-        return configuration.configure().buildSessionFactory();
+        return configuration.configure("/hibernate-mysql.cfg.xml").buildSessionFactory();
     }
 }
